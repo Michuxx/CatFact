@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            btnFetch = new Button();
+            SuspendLayout();
+            // 
+            // btnFetch
+            // 
+            btnFetch.Location = new Point(326, 71);
+            btnFetch.Name = "btnFetch";
+            btnFetch.Size = new Size(128, 46);
+            btnFetch.TabIndex = 0;
+            btnFetch.Text = "Pobierz Fakt o kocie";
+            btnFetch.UseVisualStyleBackColor = true;
+            btnFetch.Click += button1_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(btnFetch);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnFetch;
     }
 }
