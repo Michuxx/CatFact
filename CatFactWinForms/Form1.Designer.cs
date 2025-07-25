@@ -31,7 +31,7 @@
             btnFetch = new Button();
             txtFactDisplay = new TextBox();
             lblStatus = new Label();
-            label1 = new Label();
+            lblTextLength = new Label();
             folderBrowserDialog = new FolderBrowserDialog();
             button1 = new Button();
             label2 = new Label();
@@ -63,19 +63,20 @@
             // 
             lblStatus.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lblStatus.AutoSize = true;
-            lblStatus.Location = new Point(299, 156);
+            lblStatus.Location = new Point(299, 165);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(0, 15);
             lblStatus.TabIndex = 2;
             // 
-            // label1
+            // lblTextLength
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(374, 339);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 3;
-            label1.Text = "label1";
+            lblTextLength.AutoSize = true;
+            lblTextLength.Location = new Point(314, 340);
+            lblTextLength.Name = "lblTextLength";
+            lblTextLength.Size = new Size(88, 15);
+            lblTextLength.TabIndex = 3;
+            lblTextLength.Text = "Długość tekstu:";
+            lblTextLength.Click += lblTextLength_Click;
             // 
             // folderBrowserDialog
             // 
@@ -97,9 +98,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(220, 112);
             label2.Name = "label2";
-            label2.Size = new Size(375, 15);
+            label2.Size = new Size(347, 15);
             label2.TabIndex = 5;
-            label2.Text = "Nie wybrano folderu. Domyślnie wybrany pozostanie `My Documents`";
+            label2.Text = "Nie wybrano folderu. Zostanie domyślnie wybrany folder lokalny";
             // 
             // Form1
             // 
@@ -108,10 +109,11 @@
             ClientSize = new Size(800, 450);
             Controls.Add(label2);
             Controls.Add(button1);
-            Controls.Add(label1);
+            Controls.Add(lblTextLength);
             Controls.Add(lblStatus);
             Controls.Add(txtFactDisplay);
             Controls.Add(btnFetch);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -124,7 +126,7 @@
         private Button btnFetch;
         private TextBox txtFactDisplay;
         private Label lblStatus;
-        private Label label1;
+        private Label lblTextLength;
         private FolderBrowserDialog folderBrowserDialog;
         private Button button1;
         private Label label2;

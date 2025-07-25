@@ -23,7 +23,8 @@ namespace CatFactWinForms
                 var catFact = await _catFactService.GetCatFactAsync();
                 if (catFact != null)
                 {
-                    txtFactDisplay.Text += catFact.Fact;
+                    txtFactDisplay.Text += catFact.Fact + Environment.NewLine;
+                    lblTextLength.Text = $"D³ugoœæ tekstu to: {catFact.Length}";
                     string path = _fileWriter.getValidatedPath(folderBrowserDialog.SelectedPath);
                     _fileWriter.AppendLine(catFact.Fact, path);
                     lblStatus.Text = String.Empty;
@@ -58,11 +59,16 @@ namespace CatFactWinForms
             }
             else
             {
-                label2.Text = "Nie wybrano folderu. Domyœlnie wybrany pozostanie `My Documents`";
+                label2.Text = "Nie wybrano folderu. Zostanie domyœlnie wybrany folder lokalny";
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTextLength_Click(object sender, EventArgs e)
         {
 
         }
