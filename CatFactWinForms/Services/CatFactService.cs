@@ -19,7 +19,6 @@ namespace CatFactWinForms.Services
         }
         public async Task<CatFactResponse> GetCatFactAsync()
         {
-            
             var response = await _httpClient.GetStringAsync("https://catfact.ninja/fact");
             var factResponse = JsonSerializer.Deserialize<CatFactResponse>(response,
             new JsonSerializerOptions

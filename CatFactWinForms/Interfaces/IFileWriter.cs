@@ -8,6 +8,6 @@ namespace CatFactWinForms.Interfaces
 {
     public interface IFileWriter
     {
-        void AppendLine(string content);
+        void AppendLine(string content, string filePath);
     }
 }

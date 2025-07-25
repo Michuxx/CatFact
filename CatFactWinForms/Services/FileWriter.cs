@@ -1,24 +1,42 @@
 ﻿using CatFactWinForms.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Forms;
 
 namespace CatFactWinForms.Services
 {
     public class FileWriter : IFileWriter
     {
-        private readonly string _filePath;
-        public FileWriter(string filePath)
+        private readonly string _folderName;
+
+        public FileWriter(string folderName)
         {
-            _filePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
+            _folderName = folderName;
         }
 
-        public void AppendLine(string content)
+        public void AppendLine(string content, string filePath)
         {
-            File.AppendAllText(_filePath, content + Environment.NewLine);
+            var path = Path.Combine(filePath, _folderName);
+            try
+            {
+                File.AppendAllText(path, content + Environment.NewLine);
+            }
+            catch (Exception ex)
+            {
+             Console.WriteLine($"Error writing to file: {ex.Message}");
+            }
         }
 
+        public string getValidatedPath(string path)
+        {
+            if (!string.IsNullOrWhiteSpace(path))
+            {
+                return path;
+            }
+            else
+            {
+                return AppDomain.CurrentDomain.BaseDirectory;
+            }
+        }
     }
 }

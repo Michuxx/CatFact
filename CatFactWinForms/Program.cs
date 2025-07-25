@@ -16,7 +16,7 @@ namespace CatFactWinFormsApp
                 .ConfigureServices((_, services) =>
                 {
                     services.AddHttpClient<ICatFactService, CatFactService>();
-                    services.AddSingleton<IFileWriter>(provider => new FileWriter("catfacts.txt"));
+                    services.AddSingleton<FileWriter>(provider => new FileWriter("catfacts.txt"));
                     services.AddSingleton<Form1>();
                 })
                 .Build();
