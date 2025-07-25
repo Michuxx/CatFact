@@ -1,17 +1,29 @@
-namespace CatFactWinForms
+using CatFactWinForms;
+using CatFactWinForms.Interfaces;
+using CatFactWinForms.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Http;
+
+namespace CatFactWinFormsApp
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            var host = Host.CreateDefaultBuilder()
+                .ConfigureServices((_, services) =>
+                {
+                    services.AddHttpClient<ICatFactService, CatFactService>();
+                    services.AddSingleton<IFileWriter>(provider => new FileWriter("catfacts.txt"));
+                    services.AddSingleton<Form1>();
+                })
+                .Build();
+
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            var form = host.Services.GetRequiredService<Form1>();
+            Application.Run(form);
         }
     }
 }

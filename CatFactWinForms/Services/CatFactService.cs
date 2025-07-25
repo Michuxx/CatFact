@@ -21,8 +21,12 @@ namespace CatFactWinForms.Services
         {
             
             var response = await _httpClient.GetStringAsync("https://catfact.ninja/fact");
-            var factResponse = JsonSerializer.Deserialize<CatFactResponse>(response);
-            if(factResponse != null)
+            var factResponse = JsonSerializer.Deserialize<CatFactResponse>(response,
+            new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+            if (factResponse != null)
             {
                 return factResponse;
             }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             btnFetch = new Button();
+            txtFactDisplay = new TextBox();
             SuspendLayout();
             // 
             // btnFetch
@@ -41,19 +42,32 @@
             btnFetch.UseVisualStyleBackColor = true;
             btnFetch.Click += button1_Click;
             // 
+            // txtFactDisplay
+            // 
+            txtFactDisplay.Location = new Point(125, 155);
+            txtFactDisplay.Multiline = true;
+            txtFactDisplay.Name = "txtFactDisplay";
+            txtFactDisplay.ReadOnly = true;
+            txtFactDisplay.Size = new Size(532, 129);
+            txtFactDisplay.TabIndex = 1;
+            txtFactDisplay.TextChanged += textBox1_TextChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtFactDisplay);
             Controls.Add(btnFetch);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button btnFetch;
+        private TextBox txtFactDisplay;
     }
 }
